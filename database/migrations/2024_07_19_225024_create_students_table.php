@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->unique();
             $table->date('enroll_at')->default(now());
-            $table->foreignId('enrolled_by')->constrained('admins','user_id')->nullable();
+            $table->foreignId('enrolled_by')->references('id')->on('admins')->cascadeOnDelete();
             $table->timestamps();
         });
     }

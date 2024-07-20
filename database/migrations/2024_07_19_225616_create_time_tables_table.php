@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('time_tables', function (Blueprint $table) {
             $table->id();
+            // $table->foreignId('class_id')->constrained('classnames')->onDelete('cascade');
+            $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade');
+            $table->foreignId('teacher_id')->constrained('teachers')->onDelete('cascade');
+            $table->foreignId('day_id')->constrained('days'); // e.g., Monday
+            $table->foreignId('start_time')->constrained('times'); //ex , 10:00 , 10:15
+            $table->foreignId('end_time')->constrained('times'); //ex , 10:00 , 10:15
             $table->timestamps();
         });
     }

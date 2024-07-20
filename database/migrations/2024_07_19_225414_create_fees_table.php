@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('fees', function (Blueprint $table) {
             $table->id();
+            // $table->foreignId('class_id')->constrained('classnames');
+            $table->decimal('amount',8,2);
+            $table->date('date');
             $table->timestamps();
         });
     }
