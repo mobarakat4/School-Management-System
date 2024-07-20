@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\Admin\ThemeContoller;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\WeAdmin\ThemeContoller;
+use App\Http\Controllers\Web\Admin\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Admin\ProfileController as AdminProfile;
+use App\Http\Controllers\Web\Admin\ProfileController as AdminProfile;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 

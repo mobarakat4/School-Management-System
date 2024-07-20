@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('issued_books', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('book_id')->constrained('books')->cascadeOnDelete();
+            $table->foreignId('student_id')->constrained('students')->cascadeOnDelete();
+            $table->date('issue_date')->default(now()); // issue the student recieve the book
+            $table->date('return_date')->nullable();// user may not return the book but if he return it fill the column
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('username')->nullable();
             $table->string('photo')->nullable();
             $table->string('phone')->nullable();
-            $table->text('address')->nullable();
+            $table->foreignId('address_id')->constrained('addresses')->nullOnDelete()->nullable();
             $table->enum('role' , ['admin','teacher','student'])->default('student');
             $table->enum('status' , ['active','inactive'])->default('active');
             $table->string('email')->unique();
