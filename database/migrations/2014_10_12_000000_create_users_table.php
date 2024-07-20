@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('username')->nullable();
             $table->string('photo')->nullable();
             $table->string('phone')->nullable();
-            // $table->foreign('addresse_id')->references('id')->on('addresses');
+            $table->foreignId('addresse_id')->references('id')->on('addresses');
             $table->enum('role' , ['admin','teacher','student'])->default('student'); // roles of the users for authentication
             $table->enum('status' , ['active','inactive'])->default('active');
             $table->string('email')->unique();
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-    
+
     /**
      * Reverse the migrations.
      */

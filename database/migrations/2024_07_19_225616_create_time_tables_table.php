@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('time_tables', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('class_id')->constrained('classnames')->onDelete('cascade');
+            $table->foreignId('class_id')->constrained('classnames')->onDelete('cascade');
             $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade');
             $table->foreignId('teacher_id')->constrained('teachers')->onDelete('cascade');
             $table->foreignId('day_id')->constrained('days'); // e.g., Monday
