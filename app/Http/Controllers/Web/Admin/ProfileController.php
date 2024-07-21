@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Web\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProfileRequest;
@@ -8,7 +8,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Http\Requests\Admin\ChangePasswordRequest;
+use App\Models\Address;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+
+use function PHPUnit\Framework\isNull;
+
 class ProfileController extends Controller
 {
     //
@@ -16,11 +21,30 @@ class ProfileController extends Controller
         $user  = auth()->user();
         return view('admin.profile',compact('user'));
     }
+
     public function update(ProfileRequest $request){
-        $user = auth()->user();
-        $user->fill($request->post())->update();
+        $user = User::where('id',auth()->user()->id)->first();
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        if($user->address_id){
+            $address = Address::where('id',$user->address_id)->first();
+            $address->address = $request->address;
+            $address->city = $request->city;
+            $address->save();
+
+        }else{
+            $address  = new Address();
+            $address->address = $request->address;
+            $address->city = $request->address;
+            $address->save();
+            $user->address_id = $address->id;
+        }
+        $user->save();
+
         if( $request->hasFile('photo')){
-            $exist = Storage::disk('public')->exists('images/admins/'.$user->phot);
+            $exist = Storage::disk('public')->exists('images/admins/'.$user->photo);
             if($exist){
                 Storage::disk('public')->delete('images/admins/'.$user->photo);
 

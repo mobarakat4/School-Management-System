@@ -16,7 +16,9 @@
 
 	<!-- core:css -->
 	<link rel="stylesheet" href="{{asset('assets/vendors/core/core.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/css/mystyle/kotta.css')}}">
 	<!-- endinject -->
+    <link rel="stylesheet" href="{{asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css')}}">
 
 	<!-- Plugin css for this page -->
 	<link rel="stylesheet" href="{{asset('assets/vendors/flatpickr/flatpickr.min.css')}}">
@@ -26,6 +28,7 @@
     integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous">
     </script>
+    @yield('head')
 	<!-- inject:css -->
 	<link rel="stylesheet" href="{{asset('assets/fonts/feather-font/css/iconfont.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">

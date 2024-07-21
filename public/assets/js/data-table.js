@@ -1,6 +1,6 @@
 // npm package: datatables.net-bs5
 // github link: https://github.com/DataTables/Dist-DataTables-Bootstrap5
-
+console.log('happen')
 $(function() {
   'use strict';
 

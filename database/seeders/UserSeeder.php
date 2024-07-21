@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +15,8 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert([
+        $user  = new User;
+        $user->create([
             'name'=>'Admin',
             'username'=>'admin',
             'email'=>'admin@gmail.com',
@@ -22,21 +24,27 @@ class UserSeeder extends Seeder
             'role'=>'admin',
             'status'=>'active',
         ]);
-        DB::table('users')->insert([
-            'name'=>'Teacher',
-            'username'=>'teacher',
-            'email'=>'agent@gmail.com',
-            'password'=>Hash::make('123'),
-            'role'=>'teacher',
-            'status'=>'active',
-        ]);
-        DB::table('users')->insert([
-            'name'=>'Student',
-            'username'=>'student',
-            'email'=>'user@gmail.com',
-            'password'=>Hash::make('123'),
-            'role'=>'student',
-            'status'=>'active',
-        ]);
+        $user->address()->create([]);
+        $user->admin()->create(['user_id'=>2]);
+        // $user->address()->address = "address";
+        // $user->address()->city = "cairo";
+        // $user->save();
+
+        // DB::table('users')->insert([
+        //     'name'=>'Teacher',
+        //     'username'=>'teacher',
+        //     'email'=>'teacher@gmail.com',
+        //     'password'=>Hash::make('123'),
+        //     'role'=>'teacher',
+        //     'status'=>'active',
+        // ]);
+        // DB::table('users')->insert([
+        //     'name'=>'Student',
+        //     'username'=>'student',
+        //     'email'=>'student@gmail.com',
+        //     'password'=>Hash::make('123'),
+        //     'role'=>'student',
+        //     'status'=>'active',
+        // ]);
     }
 }

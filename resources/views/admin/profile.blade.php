@@ -33,7 +33,7 @@
             </div>
             <div class="mt-3">
               <label class="tx-11 fw-bolder mb-0 text-uppercase">Address:</label>
-              <p class="text-muted">{{$user->address}}</p>
+              <p class="text-muted">{{!(empty($user->address->address))?($user->address->address):''}}</p>
             </div>
             <div class="mt-3">
               <label class="tx-11 fw-bolder mb-0 text-uppercase">Email:</label>
@@ -77,24 +77,9 @@
                                     <label for="exampleInputUsername1" class="form-label">Username</label>
                                     <input type="text" class="form-control" value="{{$user->username}}" name="username" id="exampleInputUsername1" autocomplete="off" placeholder="Username">
                                     @error('username')
-                                        <div class="alert alert-danger"> {{$message}} </div>
+                                    <div class="alert alert-danger"> {{$message}} </div>
                                     @enderror
                                 </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputUsername1" class="form-label">address</label>
-                                    <input type="text" class="form-control" value="{{$user->address}}" name="address" id="exampleInputUsername1" autocomplete="off" placeholder="address">
-                                    @error('address')
-                                        <div class="alert alert-danger"> {{$message}} </div>
-                                    @enderror
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleInputUsername1" class="form-label">phone</label>
-                                    <input type="text" class="form-control" value="{{$user->phone}}" name="phone" id="exampleInputUsername1" autocomplete="off" placeholder="Phone">
-                                    @error('phone')
-                                        <div class="alert alert-danger"> {{$message}} </div>
-                                    @enderror
-                                </div>
-
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Email</label>
                                     <input type="email" class="form-control" name="email" value="{{$user->email}}" id="exampleInputEmail1" placeholder="Email">
@@ -102,6 +87,32 @@
                                         <div class="alert alert-danger"> {{$message}} </div>
                                     @enderror
                                 </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputUsername1" class="form-label">phone</label>
+                                    <input type="text" class="form-control" value="{{$user->phone}}" name="phone" id="exampleInputUsername1" autocomplete="off" placeholder="Phone">
+                                    @error('phone')
+                                    <div class="alert alert-danger"> {{$message}} </div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputUsername1" class="form-label">address</label>
+                                    <input type="text" class="form-control" name="address" id="exampleInputUsername1"
+                                    value="{{!(empty($user->address->address))?($user->address->address):''}}"
+                                    autocomplete="off" placeholder="address">
+                                    @error('address')
+                                        <div class="alert alert-danger"> {{$message}} </div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputUsername1" class="form-label">City</label>
+                                    <input type="text" class="form-control" name="city" id="exampleInputUsername1"
+                                    value="{{!(empty($user->address->city))?($user->address->city):''}}"
+                                    autocomplete="off" placeholder="City">
+                                    @error('city')
+                                        <div class="alert alert-danger"> {{$message}} </div>
+                                    @enderror
+                                </div>
+
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Image</label>
                                     <input type="file" class="form-control" name="photo" id="uimage" autocomplete="off" placeholder="Password">

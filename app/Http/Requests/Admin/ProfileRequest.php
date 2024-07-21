@@ -26,6 +26,7 @@ class ProfileRequest extends FormRequest
             'username'=>'nullable|min:4',
             'email'=>'required|min:5|email',
             'address'=>'nullable',
+            'city'=>'nullable',
             'phone'=>'nullable|numeric',
             'photo'=>'nullable|image',
         ];

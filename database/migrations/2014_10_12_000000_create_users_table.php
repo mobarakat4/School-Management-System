@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('address_id');
+
             $table->string('name');
             $table->string('username')->nullable();
             $table->string('photo')->nullable();
             $table->string('phone')->nullable();
-            $table->foreignId('addresse_id')->references('id')->on('addresses');
+            $table->foreignId('address_id')->nullable()->references('id')->on('addresses');
             $table->enum('role' , ['admin','teacher','student'])->default('student'); // roles of the users for authentication
             $table->enum('status' , ['active','inactive'])->default('active');
             $table->string('email')->unique();
