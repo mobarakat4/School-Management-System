@@ -42,7 +42,10 @@ class LoginRequest extends FormRequest
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
-        $user = User::where('email', $this->login)->orwhere('phone', $this->login)->first();
+        $user = User::where('email', $this->login)
+                    ->orwhere('phone', $this->login)
+                    ->orwhere('username',$this->login)
+                    ->first();
         $this->user = $user;
         if (!($user && Hash::check($this->password, $user->password))) {
             RateLimiter::hit($this->throttleKey());

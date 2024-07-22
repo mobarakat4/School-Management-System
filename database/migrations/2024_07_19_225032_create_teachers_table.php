@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users','id')->unique();
-            $table->foreignId('hired_by')->constrained('admins')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained('users','id')->unique();
+            $table->foreignId('hired_by')->nullable()->constrained('admins');
             $table->date('hired_at')->default(now());
             $table->timestamps();
         });

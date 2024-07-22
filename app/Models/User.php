@@ -42,6 +42,12 @@ class User extends Authenticatable
     public function admin(){
         return $this->hasOne(Admin::class);
     }
+    public function teacher(){
+        return $this->hasOne(Teacher::class);
+    }
+    public function student(){
+        return $this->hasOne(Student::class);
+    }
 
     public function address(){
         return $this->belongsTo(Address::class,'address_id');

@@ -65,9 +65,9 @@ License: For each use you must have a valid license purchased only from above li
                     <form class="forms-sample" method="POST" action="{{route('login')}}">
                         @csrf
                       <div class="mb-3">
-                        <label for="userEmail" class="form-label">Email/Phone</label>
+                        <label for="userEmail" class="form-label">Email/username/Phone</label>
                         <input type="text" class="form-control" id="userEmail" name = 'login' value="{{old('login')}}" placeholder="Enter Email/Phone">
-                        @error('login')
+                                    @error('login')
                                         <div class="alert alert-danger"> {{$message}} </div>
                                     @enderror
                       </div>

@@ -48,6 +48,7 @@ Route::prefix('admin/')->middleware(['auth','role:admin'])->group(function(){
 
     // admin management
     Route::get('admin_manage/',[AdminManageController::class,'index'])->name('admin.admin_manage.show');
+    Route::get('admin_manage/{id}',[AdminManageController::class,'show'])->name('admin.admin_manage');
 
 });
 //

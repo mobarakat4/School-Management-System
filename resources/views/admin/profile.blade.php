@@ -7,7 +7,7 @@
 
     <div class="row profile-body">
       <!-- left wrapper start -->
-      <div class="d-none d-md-block col-md-4 col-xl-4 left-wrapper">
+      <div class=" d-md-block col-md-4 col-sm-12 col-xl-4 left-wrapper mb-4">
         <div class="card rounded">
           <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-2">
@@ -16,7 +16,7 @@
                     <span class="h4 ms-3"> {{$user->name}} </span>
                 </div>
               <div class="dropdown">
-                <a type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a type="button"  id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

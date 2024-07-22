@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->unique();
+            $table->foreignId('user_id')->nullable()->constrained('users')->unique();
             $table->date('enroll_at')->default(now());
             $table->foreignId('enrolled_by')->references('id')->on('admins')->cascadeOnDelete();
             $table->timestamps();

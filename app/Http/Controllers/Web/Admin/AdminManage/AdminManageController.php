@@ -17,4 +17,7 @@ class AdminManageController extends Controller
         $admins = $this->admin->get_admins();
         return view('admin.admin_manage.show_all',compact('admins'));
     }
+    public function show($id){
+        dd($id);
+    }
 }

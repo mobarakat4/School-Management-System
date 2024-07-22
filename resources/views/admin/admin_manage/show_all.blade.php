@@ -17,7 +17,7 @@
 <div class="card">
   <div class="card-body">
     <h6 class="card-title">Data Table</h6>
-    <p class="text-muted mb-3">Read the <a href="https://datatables.net/" target="_blank"> Official DataTables Documentation </a>for a full list of instructions and other options.</p>
+    <p class="text-muted mb-3"> <a href="{{-- route('admin.admin_manage.add')--}}" > Add New Admin +</a></p>
     <div class="table-responsive">
       <table id="dataTableExample" class="table">
         <thead>
@@ -37,15 +37,15 @@
               <td>{{$admin->name}} </td>
               <td>{{$admin->email}} </td>
               <td>{{$admin->phone}}</td>
-              <td>{{$admin->address->address}}</td>
+              <td>{{(!empty($admin->address->address))?$admin->address->address:"no address"}}</td>
               <td>{{$admin->created_at}}</td>
               <td>
                   <div class="dropdown">
-                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                      <i class="bx bx-dots-vertical-rounded"></i>
+                    <button type="button" class="action-icon"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="icon-lg text-muted pb-3px" data-feather="more-vertical"></i>
                     </button>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="javascript:void(0);"
+                      <a class="dropdown-item" href="{{route('admin.admin_manage',['id' => $admin->id])}}"
                         ><i class="bx bx-edit-alt me-2"></i> Show</a
                       >
                       <a class="dropdown-item" href="javascript:void(0);"

@@ -7,7 +7,10 @@ class AdminManageService{
 
     function get_admins(){
         $admins = new User;
-        $result = $admins->with(['admin','address'])->get();
+        $admins  =$admins->with(['admin','address']);
+        $result = $admins->where('role','admin')->get();
+        // $admins = $admins->user()->get();
+        // dd($result);
         return  $result;
     }
 }
