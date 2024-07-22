@@ -77,7 +77,8 @@ class UserSeeder extends Seeder
             'city' => "giza",
         ]);
         Admin::create([
-            'user_id'=>4
+            'user_id'=>4,
+            'added_by'=>1
         ]);
 
     }

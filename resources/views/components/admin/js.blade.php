@@ -12,6 +12,7 @@
 <script src="{{asset('assets/js/template.js')}}"></script>
 <!-- endinject -->
 <script src="{{asset('assets/js/data-table.js')}}"></script>
+<script src="{{asset('assets/js/kotta.js')}}"></script>
 
 <!-- Custom js for this page -->
 <script src="{{asset('assets/js/dashboard-dark.js')}}"></script>

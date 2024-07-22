@@ -28,7 +28,7 @@
             <div class="collapse" id="emails">
                 <ul class="nav sub-menu">
                     <li class="nav-item">
-                    <a href="{{route('admin.admin_manage.show')}}" class="nav-link">show all</a>
+                    <a href="{{route('admin.admin_manage.index')}}" class="nav-link">show all</a>
                     </li>
                     <li class="nav-item">
                     <a href="pages/email/read.html" class="nav-link">Add Admin</a>

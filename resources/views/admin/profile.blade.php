@@ -16,7 +16,7 @@
                     <span class="h4 ms-3"> {{$user->name}} </span>
                 </div>
               <div class="dropdown">
-                <a type="button"  id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -136,13 +136,7 @@
         </div>
 @endsection
 @section('js')
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#uimage').on('change', function(e){
-            $('#simage').attr('src', URL.createObjectURL(e.target.files[0]));
-        });
-    });
-</script>
+
 
 
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >

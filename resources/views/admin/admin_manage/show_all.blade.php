@@ -17,15 +17,15 @@
 <div class="card">
   <div class="card-body">
     <h6 class="card-title">Data Table</h6>
-    <p class="text-muted mb-3"> <a href="{{-- route('admin.admin_manage.add')--}}" > Add New Admin +</a></p>
+    <p class="text-muted mb-3"> <a href="{{route('admin.admin_manage.create')}}" > Add New Admin +</a></p>
     <div class="table-responsive">
       <table id="dataTableExample" class="table">
         <thead>
           <tr>
-            <th>Name</th>
+            <th>UserName</th>
             <th>Email</th>
             <th>phone</th>
-            <th>Address</th>
+            <th>status</th>
             <th>create date</th>
             <th>Action</th>
           </tr>
@@ -34,10 +34,16 @@
             @foreach ($admins as $admin )
 
             <tr>
-              <td>{{$admin->name}} </td>
+              <td>{{$admin->username}} </td>
               <td>{{$admin->email}} </td>
               <td>{{$admin->phone}}</td>
-              <td>{{(!empty($admin->address->address))?$admin->address->address:"no address"}}</td>
+              <td>
+                @if($admin->status == 'active')
+                <span class="badge bg-success">Active</span>
+                @else
+                <span class="badge bg-danger">InActive</span>
+                @endif
+              </td>
               <td>{{$admin->created_at}}</td>
               <td>
                   <div class="dropdown">
@@ -45,7 +51,7 @@
                       <i class="icon-lg text-muted pb-3px" data-feather="more-vertical"></i>
                     </button>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="{{route('admin.admin_manage',['id' => $admin->id])}}"
+                      <a class="dropdown-item" href="{{route('admin.admin_manage.show',['admin_manage' => $admin->id])}}"
                         ><i class="bx bx-edit-alt me-2"></i> Show</a
                       >
                       <a class="dropdown-item" href="javascript:void(0);"
