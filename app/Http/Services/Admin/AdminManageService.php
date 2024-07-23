@@ -26,6 +26,7 @@ class AdminManageService{
         $res['id'] = $admin->id;
         $res['name'] = $admin->name;
         $res['username'] = $admin->username;
+        $res['email'] = $admin->email;
         $res['phone'] = $admin->phone;
         $res['photo'] = $admin->photo;
         $res['status'] = $admin->status;
@@ -34,14 +35,14 @@ class AdminManageService{
             $res['address'] = $address->address;
             $res['city'] = $address->city;
         }else{
-            $res['address'] = 'no address';
-            $res['city'] = 'no city';
+            $res['address'] = null;
+            $res['city'] = null;
         }
         $admin = Admin::where('user_id',$admin->id)->first();
         if($admin->added_by){
             $res['added_by'] = $admin->added_by;
         }else{
-            $res['added_by'] = "none";
+            $res['added_by'] = null;
         }
         $res['created_at'] = $admin->created_at;
         $res['updated_at'] = $admin->updated_at;
@@ -56,7 +57,12 @@ class AdminManageService{
             $user->role = 'admin';
             $user->email = $request->email;
             $user->phone = $request->phone??null;
-            $user->password = Hash::make($request->password);
+            if($request->password){
+                $user->password = Hash::make($request->password);
+            }else{
+                $user->password = Hash::make('admin'); // default password is (admin)
+
+            }
             if($request->address || $request->city){
                 $address = new Address;
                 $address->address = $request->address??null;
@@ -79,6 +85,60 @@ class AdminManageService{
         }catch(Exception $e){
             $this->error = $e->getMessage();
         }
+    }
+    public function update_admin($request ,$id){
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        if($request->address || $request->city){     //check if there is address or city
+            if($user->address_id){                   // check if there is previeus address or city
+                $address = Address::find($user->address_id);
+            }else{
+                $address = new Address;
+            }
+            $address->address = $request->address;
+            $address->city = $request->city;
+            $address->save();
+            $user->address_id = $address->id;
+        }else{
+            if($user->address_id){
+                $address = Address::find($user->address_id);
+                $address->address = $request->address;
+                $address->city = $request->city;
+                $address->save();
+            }
+        }
+        if($request->password){
+            $user->password = Hash::make($request->password);
+        }
+        if( $request->hasFile('photo')){
+            $exist = Storage::disk('public')->exists('images/admins/'.$user->photo);
+            if($exist){
+                Storage::disk('public')->delete('images/admins/'.$user->photo);
+            }
+            $imageName = Str::random().'.'.$request->photo->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('images/admins/', $request->photo , $imageName);
+            $user->photo = $imageName;
+            // dd('error');
+        }
+
+
+        //TODO (add updated by )
+        $user->save();
+    }
+    public function delete_admin($id){
+        $user = User::find($id);
+        if($user->address_id){
+            $address = Address::find($user->address_id);
+            $user->address_id = null;
+            $user->save();
+            $address->delete();
+        }
+        $admin = Admin::where('user_id',$user->id)->first();
+        $admin->delete();
+        $user->delete();
     }
 
     public function get_error(){

@@ -28,7 +28,7 @@ class AdminManagementRequest extends FormRequest
             'phone'=>'nullable|min:5|numeric',
             'address'=>'nullable|min:3',
             'city'=>'nullable|min:3',
-            'password'=>'required|min:3',
+            'password'=>'nullable|min:3',
             'photo'=>'nullable|image',
         ];
     }

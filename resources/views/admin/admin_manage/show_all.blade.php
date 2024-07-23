@@ -5,13 +5,12 @@
 @section('content')
 <div class="page-content">
 
-    <nav class="page-breadcrumb">
+    <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Tables</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Data Table</li>
+          <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Admin Management</li>
         </ol>
-    </nav>
-
+      </nav>
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
 <div class="card">
@@ -54,12 +53,16 @@
                       <a class="dropdown-item" href="{{route('admin.admin_manage.show',['admin_manage' => $admin->id])}}"
                         ><i class="bx bx-edit-alt me-2"></i> Show</a
                       >
-                      <a class="dropdown-item" href="javascript:void(0);"
+                      <a class="dropdown-item" href="{{route('admin.admin_manage.edit',['admin_manage' => $admin->id])}}"
                         ><i class="bx bx-edit-alt me-2"></i> Edit</a
                       >
-                      <a class="dropdown-item" href="javascript:void(0);"
-                        ><i class="bx bx-trash me-2"></i> Delete</a
-                      >
+                      <form action="{{route('admin.admin_manage.destroy',['admin_manage'=> $admin->id])}}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="dropdown-item">
+                            <i class="bx bx-trash me-2"></i> Delete
+                        </button>
+                      </form>
                     </div>
                   </div>
               </td>
@@ -82,7 +85,7 @@
 	<!-- Plugin js for this page -->
   <script src="{{asset('assets/vendors/datatables.net/jquery.dataTables.js')}}"></script>
   <script src="{{asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js')}}"></script>
-
+    @include('components.script.toaster')
 	<!-- Custom js for this page -->
 	<!-- End custom js for this page -->
 @endsection

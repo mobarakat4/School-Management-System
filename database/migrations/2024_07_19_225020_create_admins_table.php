@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users','id')->unique();
             $table->foreignId('added_by')->nullable()->constrained('admins','id');
+            $table->foreignId('updated_by')->nullable()->constrained('admins','id');
             $table->timestamps();
         });
     }
