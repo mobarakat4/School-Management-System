@@ -64,6 +64,10 @@ class UserSeeder extends Seeder
         ]);
 
         $user  = new User;
+        $user->address()->create([
+            'address'=>"2th street",
+            'city' => "giza",
+        ]);
         $user->create([
             'name'=>'Admin2',
             'username'=>'admin2',
@@ -71,10 +75,7 @@ class UserSeeder extends Seeder
             'password'=>Hash::make('123'),
             'role'=>'admin',
             'status'=>'active',
-        ]);
-        $user->address()->create([
-            'address'=>"2th street",
-            'city' => "giza",
+            'address_id'=>1
         ]);
         Admin::create([
             'user_id'=>4,

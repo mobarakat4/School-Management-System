@@ -31,7 +31,7 @@
                     <a href="{{route('admin.admin_manage.index')}}" class="nav-link">show all</a>
                     </li>
                     <li class="nav-item">
-                    <a href="pages/email/read.html" class="nav-link">Add Admin</a>
+                    <a href="{{route('admin.admin_manage.create')}}" class="nav-link">Add Admin</a>
                     </li>
                 </ul>
                 </div>

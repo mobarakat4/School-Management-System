@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Admin\AdminManage;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AdminManagementRequest;
 use App\Http\Services\Admin\AdminManageService;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,17 +21,32 @@ class AdminManageController extends Controller
     }
     public function show($id){
         $admin = $this->admin->get_admin($id);
-
         dd($admin);
     }
     public function create(){
         return view('admin.admin_manage.add');
     }
-    public function store(){
-        dd('hello');
+    public function store(AdminManagementRequest $request){
+        $this->admin->add_admin($request);
+        if($this->admin->get_error()){
+            $arr = [
+                'message'=> ( $this->admin->get_error()),
+                'alert_type'=>'error'
+            ];
+
+        }else{
+            $arr = [
+                'message'=> "admin added successfuly",
+                'alert_type'=>'success'
+            ];
+
+        }
+        return redirect()->back()->with($arr);
     }
     public function edit(){
 
     }
+
+
 
 }
