@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class AdminManageController extends Controller
 {
-    private $admin ;
+    private $admin;
 
     public function __construct(){
         $this->admin = new AdminManageService;

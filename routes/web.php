@@ -5,6 +5,7 @@ use App\Http\Controllers\Web\Admin\AdminController;
 use App\Http\Controllers\AgentController;use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Web\Admin\AdminManage\AdminManageController;
 use App\Http\Controllers\Web\Admin\ProfileController as AdminProfile;
+use App\Http\Controllers\Web\Admin\RoleController;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 /*
@@ -51,6 +52,8 @@ Route::as('admin.')->prefix('admin/')->middleware(['auth','rol:admin'])->group(f
     // Route::get('admin_manage/{id}',[AdminManageController::class,'show'])->name('admin.admin_manage.show_one');
     // Route::get('admin_manage/add',[AdminManageController::class,'add'])->name('admin.admin_manage.add');
     Route::resource('admin_manage',AdminManageController::class);
+    Route::resource('role',RoleController::class);
+
 
 });
 //

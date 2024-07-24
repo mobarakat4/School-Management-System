@@ -20,12 +20,12 @@
         </li>
         <li class="nav-item nav-category">User Management</li>
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false" aria-controls="emails">
+            <a class="nav-link" data-bs-toggle="collapse" href="#admins" role="button" aria-expanded="false" aria-controls="emails">
             <i class="link-icon" data-feather="mail"></i>
             <span class="link-title">Admins</span>
             <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="collapse" id="emails">
+            <div class="collapse" id="admins">
                 <ul class="nav sub-menu">
                     <li class="nav-item">
                     <a href="{{route('admin.admin_manage.index')}}" class="nav-link">show all</a>
@@ -36,13 +36,26 @@
                 </ul>
                 </div>
         </li>
-
+        <li class="nav-item nav-category">User Management</li>
         <li class="nav-item">
-            <a href="pages/apps/calendar.html" class="nav-link">
-            <i class="link-icon" data-feather="calendar"></i>
-            <span class="link-title">Calendar</span>
+            <a class="nav-link" data-bs-toggle="collapse" href="#roles" role="button" aria-expanded="false" aria-controls="emails">
+            <i class="link-icon" data-feather="mail"></i>
+            <span class="link-title">Admins</span>
+            <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
+            <div class="collapse" id="roles">
+                <ul class="nav sub-menu">
+                    <li class="nav-item">
+                    <a href="{{route('admin.role.index')}}" class="nav-link">show all</a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="{{route('admin.role.create')}}" class="nav-link">Add Role</a>
+                    </li>
+                </ul>
+                </div>
         </li>
+
+
         <li class="nav-item nav-category">Components</li>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="false" aria-controls="uiComponents">
