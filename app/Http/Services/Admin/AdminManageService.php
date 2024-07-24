@@ -127,6 +127,10 @@ class AdminManageService{
 
         //TODO (add updated by )
         $user->save();
+        $admin = $user->admin;
+        // dd(auth()->user()->admin->id);
+        $admin->updated_by = auth()->user()->admin->id;
+        $admin->save();
     }
     public function delete_admin($id){
         $user = User::find($id);
