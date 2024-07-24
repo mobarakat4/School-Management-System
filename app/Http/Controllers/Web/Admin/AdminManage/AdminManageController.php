@@ -14,6 +14,9 @@ class AdminManageController extends Controller
 
     public function __construct(){
         $this->admin = new AdminManageService;
+        $this->middleware([
+            'permission:adminmanage'
+        ]);
     }
     public function index(){
         $admins = $this->admin->get_admins();

@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
 });
 //admin
 require __DIR__.'/auth.php';
-Route::as('admin.')->prefix('admin/')->middleware(['auth','role:admin'])->group(function(){
+Route::as('admin.')->prefix('admin/')->middleware(['auth','rol:admin'])->group(function(){
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('logout', [AdminController::class, 'destroy'])->name('logout');
 
@@ -58,7 +58,7 @@ Route::prefix('admin/')->middleware('guest')->group(function(){
     Route::get('login', [AdminController::class, 'login'])->name('admin.login');
 
 });
-// Route::middleware(['auth','role:teacher'])->group(function(){
+// Route::middleware(['auth','rol:teacher'])->group(function(){
 
 //     Route::get('/teacher/dashboard', [AgentController::class, 'dashboard'])->name('agent.dashboard');
 // });
