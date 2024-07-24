@@ -16,7 +16,7 @@
 <div class="card">
   <div class="card-body">
     <h6 class="card-title">All Roles</h6>
-    <p class="text-muted mb-3"> <a href="{{route('admin.admin_manage.create')}}" > Add New Admin +</a></p>
+    <p class="text-muted mb-3"> <a href="{{route('admin.role.create')}}" > Add New Role +</a></p>
     <div class="table-responsive">
       <table id="dataTableExample" class="table">
         <thead>

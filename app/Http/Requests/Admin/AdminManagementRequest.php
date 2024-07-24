@@ -23,8 +23,8 @@ class AdminManagementRequest extends FormRequest
     {
         return [
             'name'=>'nullable|min:4',
-            'username'=>'required|min:4',
-            'email'=>'required|email',
+            'username'=>'required|min:4|unique:users,username',
+            'email'=>'required|email|unique:users,email',
             'phone'=>'nullable|min:5|numeric',
             'address'=>'nullable|min:3',
             'city'=>'nullable|min:3',

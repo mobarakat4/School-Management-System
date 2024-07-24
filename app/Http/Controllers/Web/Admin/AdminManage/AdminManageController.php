@@ -12,10 +12,11 @@ class AdminManageController extends Controller
 {
     private $admin;
 
-    public function __construct(){
-        $this->admin = new AdminManageService;
+    public function __construct(AdminManageService $adminManageService){
+        // $this->admin = new AdminManageService;
+        $this->admin = $adminManageService;
         $this->middleware([
-            'permission:adminmanage'
+            'permission:admin manage'
         ]);
     }
     public function index(){

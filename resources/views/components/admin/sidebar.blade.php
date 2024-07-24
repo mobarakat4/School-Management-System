@@ -36,11 +36,11 @@
                 </ul>
                 </div>
         </li>
-        <li class="nav-item nav-category">User Management</li>
+        <li class="nav-item nav-category">Role Management</li>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#roles" role="button" aria-expanded="false" aria-controls="emails">
             <i class="link-icon" data-feather="mail"></i>
-            <span class="link-title">Admins</span>
+            <span class="link-title">Roles</span>
             <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
             <div class="collapse" id="roles">
