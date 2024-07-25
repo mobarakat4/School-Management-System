@@ -40,9 +40,24 @@
   <!-- Layout styles -->
     @if(session()->has('light'))
 
-    <link rel="stylesheet" href="{{asset('assets/css/demo1/style.css')}}">
+        @if(session()->get('locale' ) == 'en' )
+            <link rel="stylesheet" href="{{asset('assets/css/demo1/style.css')}}">
+        @else
+            <link rel="stylesheet" href="{{asset('assets/css/demo1/style-rtl.css')}}">
+            <link rel="stylesheet" href="{{asset('assets/css/mystyle/kotta-rtl.css')}}">
+        @endif
+
+
     @else
-	<link rel="stylesheet" href="{{asset('assets/css/demo2/style.css')}}">
+
+
+        @if(session()->get('locale' ) == 'en' )
+            <link rel="stylesheet" href="{{asset('assets/css/demo2/style.css')}}">
+
+        @else
+            <link rel="stylesheet" href="{{asset('assets/css/demo2/style-rtl.css')}}">
+            <link rel="stylesheet" href="{{asset('assets/css/mystyle/kotta-rtl.css')}}">
+        @endif
     @endif
   <!-- End layout styles -->
 

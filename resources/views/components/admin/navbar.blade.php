@@ -14,11 +14,21 @@
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="flag-icon flag-icon-us mt-1" title="us"></i> <span class="ms-1 me-1 d-none d-md-inline-block">English</span>
+                    @if(session()->get('locale' ) == 'en' )
+                    <i class="flag-icon flag-icon-us mt-1" title="en"></i> <span class="ms-1 me-1 d-none d-md-inline-block">
+                        {{__('messages.english')}}
+                    </span>
+                    @else
+                    <i class="flag-icon flag-icon-eg mt-1" title="ar"></i> <span class="ms-1 me-1 d-none d-md-inline-block">
+                        {{__('messages.arabic')}}
+
+                    </span>
+
+                        @endif
                 </a>
                 <div class="dropdown-menu" aria-labelledby="languageDropdown">
-    <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> English </span></a>
-    <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-eg" title="ar" id="ar"></i> <span class="ms-1"> arabic </span></a>
+    <a href="{{route('setLocale',['locale'=>'en'])}}" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> {{__('messages.english')}}</a>
+    <a href="{{route('setLocale',['locale'=>'ar'])}}" class="dropdown-item py-2"><i class="flag-icon flag-icon-eg" title="ar" id="ar"></i> <span class="ms-1"> {{__('messages.arabic')}} </span></a>
                 </div>
     </li>
             <li class="nav-item dropdown">

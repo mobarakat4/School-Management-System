@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Web\Admin\ThemeContoller;
 use App\Http\Controllers\Web\Admin\AdminController;
-use App\Http\Controllers\AgentController;use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AgentController;
+use App\Http\Controllers\Localization\LocaleController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Web\Admin\AdminManage\AdminManageController;
 use App\Http\Controllers\Web\Admin\ProfileController as AdminProfile;
 use App\Http\Controllers\Web\Admin\RoleController;
@@ -65,4 +67,5 @@ Route::prefix('admin/')->middleware('guest')->group(function(){
 
 //     Route::get('/teacher/dashboard', [AgentController::class, 'dashboard'])->name('agent.dashboard');
 // });
+Route::get('locale/{locale}',[LocaleController::class,'setLocale'])->name('setLocale');
 

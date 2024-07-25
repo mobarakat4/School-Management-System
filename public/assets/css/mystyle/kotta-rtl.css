@@ -1,0 +1,7 @@
+.ar-dir{
+    display: flex ;
+    flex-direction: row-reverse !important;
+}
+.ar-fontlarge{
+    font-size: large !important;
+}
