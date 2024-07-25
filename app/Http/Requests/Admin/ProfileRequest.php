@@ -23,8 +23,8 @@ class ProfileRequest extends FormRequest
     {
         return [
             'name'=>'required|min:4',
-            'username'=>'nullable|min:4|unique:users,username',
-            'email'=>'required|min:5|email|unique:users,email',
+            'username'=>'nullable|min:4|unique:users,username,'.$this->user()->id,
+            'email'=>'required|min:5|email|unique:users,email,'.$this->user()->id,
             'address'=>'nullable',
             'city'=>'nullable',
             'phone'=>'nullable|numeric',
