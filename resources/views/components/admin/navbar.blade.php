@@ -26,7 +26,7 @@
 
                         @endif
                 </a>
-                <div class="dropdown-menu" aria-labelledby="languageDropdown">
+                <div class="dropdown-menu " aria-labelledby="languageDropdown">
     <a href="{{route('setLocale',['locale'=>'en'])}}" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> {{__('messages.english')}}</a>
     <a href="{{route('setLocale',['locale'=>'ar'])}}" class="dropdown-item py-2"><i class="flag-icon flag-icon-eg" title="ar" id="ar"></i> <span class="ms-1"> {{__('messages.arabic')}} </span></a>
                 </div>

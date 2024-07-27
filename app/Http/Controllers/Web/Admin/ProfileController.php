@@ -12,6 +12,7 @@ use App\Http\Requests\Admin\ChangePasswordRequest;
 use App\Http\Services\Admin\ProfileService;
 use App\Models\Address;
 use App\Models\User;
+use App\Notifications\ProfileChanged;
 
 use function PHPUnit\Framework\isNull;
 
@@ -29,6 +30,8 @@ class ProfileController extends Controller
 
     public function update(ProfileRequest $request){
         $this->profile->update_profile($request);
+        $user = User::find(auth()->id());
+        $user->notify( new ProfileChanged());
         return redirect()->back()->with([
             'message'=> "Profile Updated successfully",
             'alert_type'=>"success"
