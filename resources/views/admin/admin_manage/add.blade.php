@@ -2,20 +2,20 @@
 @section('title','Add Admin')
 @section('content')
 
-<div class="page-content">
+<div class="page-content perfect-scrollbar-example">
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-          <li class="breadcrumb-item"><a href="{{route('admin.admin_manage.index')}}">Admin Management</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Create</li>
+          <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">@lang('messages.main')</a></li>
+          <li class="breadcrumb-item"><a href="{{route('admin.admin_manage.index')}}">@lang('messages.admin management')</a></li>
+          <li class="breadcrumb-item active" aria-current="page">@lang('messages.add')</li>
         </ol>
       </nav>
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title ">Add Admin</h2>
+                    <h2 class="card-title ">@lang('messages.add') @lang('messages.admin')</h2>
                     <form action="{{route('admin.admin_manage.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3 mt-4">

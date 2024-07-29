@@ -9,13 +9,19 @@ use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Repositories\Users\UserRepository;
+use App\Repositories\Users\AdminRepository;
 class AdminManageService{
 
     private $error;
 
     private $image_service ;
+    private $user_repo ;
+    private $admin_repo ;
     public function __construct(){
         $this->image_service = new ImageService;
+        $this->user_repo = new UserRepository;
+        $this->admin_repo = new AdminRepository;
     }
     function get_admins(){
         $admins = new User;
@@ -55,35 +61,13 @@ class AdminManageService{
     }
     public function add_admin($request){
         try{
-
-            $user = new User;
-            $user->name = $request->name?? null;
-            $user->username = $request->username;
-            $user->role = 'admin';
-            $user->email = $request->email;
-            $user->phone = $request->phone??null;
-            if($request->password){
-                $user->password = Hash::make($request->password);
-            }else{
-                $user->password = Hash::make('admin'); // default password is (admin)
-
-            }
-            if($request->address || $request->city){
-                $address = new Address;
-                $address->address = $request->address??null;
-                $address->city = $request->city??null;
-                $address->save();
-                $user->address_id = $address->id;
-            }
+            $user = $this->user_repo->create($request);
             if( $request->hasFile('photo')){
 
                 $this->image_service->add($request->photo,'admins',$user);
             }
             $user->save();
-            $admin = new Admin;
-            $admin->user_id = $user->id;
-            $admin->added_by = Admin::where('id',auth()->user()->id)->first(['id'])->id;
-            $admin->save();
+            $this->admin_repo->create($user->id);
         }catch(Exception $e){
             $this->error = $e->getMessage();
         }
@@ -120,10 +104,10 @@ class AdminManageService{
         }
 
 
-        //TODO (add updated by )
+
         $user->save();
         $admin = $user->admin;
-        // dd(auth()->user()->admin->id);
+
         $admin->updated_by = auth()->user()->admin->id;
         $admin->save();
     }

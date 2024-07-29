@@ -7,6 +7,7 @@ class ImageService {
 
     public function add($photo,$path,&$user):void{
         $imageName = Str::random().'.'.$photo->getClientOriginalExtension();
+        /** @var Illuminate\Support\Facades\Storage */
         Storage::disk('public')->putFileAs($this->main_path."/".$path.'/', $photo , $imageName);
         $user->photo = $imageName;
     }

@@ -8,3 +8,11 @@
 body{
     direction: rtl;
 }
+*{
+    font-size: large !important;
+}
+.page-content{
+    height: 95vh !important;
+    overflow: auto;
+}
+
