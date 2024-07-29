@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Web\Admin\AdminManage;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AdminManagementRequest;
-use App\Http\Services\Admin\AdminManageService;
+use App\Services\Admin\AdminManageService;
 use App\Models\User;
 use Illuminate\Http\Request;
 

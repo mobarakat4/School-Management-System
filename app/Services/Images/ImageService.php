@@ -1,13 +1,13 @@
 <?php
-namespace App\Http\Services\Images;
+namespace App\Services\Images;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 class ImageService {
     private $main_path = 'images';
 
-    public function add(&$request,$path,&$user):void{
-        $imageName = Str::random().'.'.$request->photo->getClientOriginalExtension();
-        Storage::disk('public')->putFileAs($this->main_path."/".$path.'/', $request->photo , $imageName);
+    public function add($photo,$path,&$user):void{
+        $imageName = Str::random().'.'.$photo->getClientOriginalExtension();
+        Storage::disk('public')->putFileAs($this->main_path."/".$path.'/', $photo , $imageName);
         $user->photo = $imageName;
     }
     public function delete($path,&$user):void{

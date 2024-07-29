@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Admin\ChangePasswordRequest;
-use App\Http\Services\Admin\ProfileService;
+use App\Services\Admin\ProfileService;
 use App\Models\Address;
 use App\Models\User;
 use App\Notifications\ProfileChanged;

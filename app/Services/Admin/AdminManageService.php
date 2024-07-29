@@ -1,7 +1,7 @@
 <?php
-namespace App\Http\Services\Admin;
+namespace App\Services\Admin;
 
-use App\Http\Services\Images\ImageService;
+use App\Services\Images\ImageService;
 use App\Models\Address;
 use App\Models\User;
 use App\Models\Admin;
@@ -77,7 +77,7 @@ class AdminManageService{
             }
             if( $request->hasFile('photo')){
 
-                $this->image_service->add($request,'admins',$user);
+                $this->image_service->add($request->photo,'admins',$user);
             }
             $user->save();
             $admin = new Admin;
@@ -116,7 +116,7 @@ class AdminManageService{
             $user->password = Hash::make($request->password);
         }
         if( $request->hasFile('photo')){
-            $this->image_service->update($request,'admins',$user);
+            $this->image_service->update( $request->photo, 'admins', $user);
         }
 
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Web\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\RoleRequest;
-use App\Http\Services\Admin\RoleService;
+use App\Services\Admin\RoleService;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;

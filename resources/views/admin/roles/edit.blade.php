@@ -15,7 +15,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title ">Add Admin</h2>
+                    <h2 class="card-title ">Update Admin</h2>
                     <form action="{{route('admin.role.update',['role'=>$role->id])}}" method="POST" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf

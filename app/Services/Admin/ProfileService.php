@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Services\Admin;
+namespace App\Services\Admin;
 
 use App\Models\Address;
 use App\Models\User;
@@ -9,8 +9,13 @@ use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Services\Images\ImageService;
 
 class ProfileService{
+    private $image_service;
+    public function __construct(){
+        $this->image_service = new ImageService;
+    }
     public function update_profile($request){
         $user = User::where('id',auth()->user()->id)->first();
         $user->name = $request->name;
@@ -32,17 +37,7 @@ class ProfileService{
         }
 
         if( $request->hasFile('photo')){
-            $exist = Storage::disk('public')->exists('images/admins/'.$user->photo);
-            if($exist){
-                Storage::disk('public')->delete('images/admins/'.$user->photo);
-
-            }
-
-            $imageName = Str::random().'.'.$request->photo->getClientOriginalExtension();
-            Storage::disk('public')->putFileAs('images/admins/', $request->photo , $imageName);
-            $user->photo = $imageName;
-            // dd('error');
-
+            $this->image_service->update( $request->photo, 'admins', $user);
         }
         $user->save();
     }
