@@ -62,4 +62,19 @@
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
+  <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('de85d7ba66b720f51c6f', {
+      cluster: 'eu'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(JSON.stringify(data));
+    });
+  </script>
 </head>

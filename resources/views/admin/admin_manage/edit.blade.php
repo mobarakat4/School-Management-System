@@ -19,6 +19,7 @@
                     <form action="{{route('admin.admin_manage.update',['admin_manage' => $admin['id'] ])}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+                        <input type="hidden" name="id" value="{{ $admin['id'] }}">
                         <div class="mb-3 mt-4">
                             <label for="exampleInputText1" class="form-label">Name</label>
                             <input type="text" class="form-control" id="exampleInputText1" name="name" value="{{$admin['name']}}" placeholder="Enter Name">

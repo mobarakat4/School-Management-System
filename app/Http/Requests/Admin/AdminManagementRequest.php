@@ -23,8 +23,8 @@ class AdminManagementRequest extends FormRequest
     {
         return [
             'name'=>'nullable|min:4',
-            'username'=>'required|min:4|unique:users,username',
-            'email'=>'required|email|unique:users,email',
+            'username'=>'required|min:4|unique:users,username,'.$this->id,
+            'email'=>'required|email|unique:users,email,'.$this->id,
             'phone'=>'nullable|min:5|numeric',
             'address'=>'nullable|min:3',
             'city'=>'nullable|min:3',

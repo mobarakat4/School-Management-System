@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Services\Admin;
 
+use App\Http\Services\Images\ImageService;
 use App\Models\Address;
 use App\Models\User;
 use App\Models\Admin;
@@ -12,6 +13,10 @@ class AdminManageService{
 
     private $error;
 
+    private $image_service ;
+    public function __construct(){
+        $this->image_service = new ImageService;
+    }
     function get_admins(){
         $admins = new User;
         $admins  =$admins->with(['admin','address']);
@@ -22,23 +27,23 @@ class AdminManageService{
     }
     function get_admin($id){
         $res = [];
-        $admin = User::whereId($id)->first();
-        $res['id'] = $admin->id;
-        $res['name'] = $admin->name;
-        $res['username'] = $admin->username;
-        $res['email'] = $admin->email;
-        $res['phone'] = $admin->phone;
-        $res['photo'] = $admin->photo;
-        $res['status'] = $admin->status;
-        if($admin->address_id){
-            $address = Address::whereId($admin->address_id)->first();
+        $user = User::whereId($id)->first();
+        $res['id'] = $user->id;
+        $res['name'] = $user->name;
+        $res['username'] = $user->username;
+        $res['email'] = $user->email;
+        $res['phone'] = $user->phone;
+        $res['photo'] = $user->photo;
+        $res['status'] = $user->status;
+        if($user->address_id){
+            $address = Address::whereId($user->address_id)->first();
             $res['address'] = $address->address;
             $res['city'] = $address->city;
         }else{
             $res['address'] = null;
             $res['city'] = null;
         }
-        $admin = Admin::where('user_id',$admin->id)->first();
+        $admin = Admin::where('user_id',$user->id)->first();
         if($admin->added_by){
             $res['added_by'] = $admin->added_by;
         }else{
@@ -72,10 +77,7 @@ class AdminManageService{
             }
             if( $request->hasFile('photo')){
 
-                $imageName = Str::random().'.'.$request->photo->getClientOriginalExtension();
-                Storage::disk('public')->putFileAs('images/admins/', $request->photo , $imageName);
-                $user->photo = $imageName;
-                // dd('error');
+                $this->image_service->add($request,'admins',$user);
             }
             $user->save();
             $admin = new Admin;
@@ -114,14 +116,7 @@ class AdminManageService{
             $user->password = Hash::make($request->password);
         }
         if( $request->hasFile('photo')){
-            $exist = Storage::disk('public')->exists('images/admins/'.$user->photo);
-            if($exist){
-                Storage::disk('public')->delete('images/admins/'.$user->photo);
-            }
-            $imageName = Str::random().'.'.$request->photo->getClientOriginalExtension();
-            Storage::disk('public')->putFileAs('images/admins/', $request->photo , $imageName);
-            $user->photo = $imageName;
-            // dd('error');
+            $this->image_service->update($request,'admins',$user);
         }
 
 
