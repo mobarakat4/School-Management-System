@@ -7,26 +7,26 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Admin Management</li>
+          <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">@lang('messages.main')</a></li>
+          <li class="breadcrumb-item active" aria-current="page">@lang('messages.admin management')</li>
         </ol>
       </nav>
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
 <div class="card">
   <div class="card-body">
-    <h6 class="card-title">Data Table</h6>
-    <p class="text-muted mb-3"> <a href="{{route('admin.admin_manage.create')}}" > Add New Admin +</a></p>
+    <h6 class="card-title">@lang('messages.all') @lang('messages.admins')</h6>
+    <p class="text-muted mb-3"> <a href="{{route('admin.admin_manage.create')}}" > @lang('messages.add') @lang('messages.admin') +</a></p>
     <div class="table-responsive">
       <table id="dataTableExample" class="table">
         <thead>
           <tr>
-            <th>UserName</th>
-            <th>Email</th>
-            <th>phone</th>
-            <th>status</th>
-            <th>create date</th>
-            <th>Action</th>
+            <th>@lang('messages.username')</th>
+            <th>@lang('messages.email')</th>
+            <th>@lang('messages.phone')</th>
+            <th>@lang('messages.status')</th>
+            <th>@lang('messages.created at')</th>
+            <th>@lang('messages.action')</th>
           </tr>
         </thead>
         <tbody>
@@ -38,9 +38,9 @@
               <td>{{$admin->phone}}</td>
               <td>
                 @if($admin->status == 'active')
-                <span class="badge bg-success">Active</span>
+                <span class="badge bg-success">@lang('messages.active')</span>
                 @else
-                <span class="badge bg-danger">InActive</span>
+                <span class="badge bg-danger">@lang('messages.inactive')</span>
                 @endif
               </td>
               <td>{{$admin->created_at}}</td>
@@ -51,16 +51,16 @@
                     </button>
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="{{route('admin.admin_manage.show',['admin_manage' => $admin->id])}}"
-                        ><i class="bx bx-edit-alt me-2"></i> Show</a
+                        ><i class="bx bx-edit-alt me-2"></i> @lang('messages.show') </a
                       >
                       <a class="dropdown-item" href="{{route('admin.admin_manage.edit',['admin_manage' => $admin->id])}}"
-                        ><i class="bx bx-edit-alt me-2"></i> Edit</a
+                        ><i class="bx bx-edit-alt me-2"></i> @lang('messages.update')</a
                       >
                       <form action="{{route('admin.admin_manage.destroy',['admin_manage'=> $admin->id])}}" method="POST">
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="dropdown-item">
-                            <i class="bx bx-trash me-2"></i> Delete
+                            <i class="bx bx-trash me-2"></i> @lang('messages.delete')
                         </button>
                       </form>
                     </div>

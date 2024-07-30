@@ -7,8 +7,8 @@
             <div class="input-group">
   <div class="input-group-text">
     <i data-feather="search"></i>
-  </div>
-                <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
+            </div>
+                <input type="text" class="form-control" id="navbarForm" placeholder="@lang('messages.search')...">
             </div>
         </form>
         <ul class="navbar-nav">
