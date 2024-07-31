@@ -1,5 +1,7 @@
 @extends('layouts.admin')
-@section('title','Add Admin')
+@section('title')
+@lang('messages.add') @lang('messages.admin')
+@endsection
 @section('content')
 
 <div class="page-content perfect-scrollbar-example">

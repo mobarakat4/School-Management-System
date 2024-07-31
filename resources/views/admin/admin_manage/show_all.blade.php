@@ -1,5 +1,7 @@
 @extends('layouts.admin')
-@section('title','All Users')
+@section('title')
+@lang('messages.all') @lang('messages.admins')
+@endsection
 @section('head')
 @endsection
 @section('content')

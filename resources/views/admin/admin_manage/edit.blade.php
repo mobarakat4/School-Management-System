@@ -1,5 +1,7 @@
 @extends('layouts.admin')
-@section('title','Add Admin')
+@section('title')
+@lang('messages.update') @lang('messages.admin')
+@endsection
 @section('content')
 
 <div class="page-content">
@@ -10,7 +12,7 @@
           <li class="breadcrumb-item"><a href="{{route('admin.admin_manage.index')}}">@lang('messages.admin management')</a></li>
           <li class="breadcrumb-item active" aria-current="page">@lang('messages.update')</li>
         </ol>
-      </nav>
+    </nav>
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
@@ -74,7 +76,7 @@
                         <div class="mb-3">
                             <label for="exampleFormControlSelect1" class="form-label">@lang('messages.select') @lang('messages.status')</label>
                             <select class="form-select" name="status" id="exampleFormControlSelect1">
-                                @if(old('status')=='inactive')
+                                @if($admin['status'] == 'inactive')
                                     <option value="active">@lang('messages.active')</option>
                                     <option value="inactive" selected>@lang('messages.inactive')</option>
                                 @else
