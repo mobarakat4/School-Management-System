@@ -13,8 +13,9 @@ class AdminManageController extends Controller
 {
     private $admin;
 
-    public function __construct(){
-        $this->admin = new UserManageService(new AdminRepository); //ignores binding
+    public function __construct(UserManageService $userManageService){
+        // $this->admin = new UserManageService(new AdminRepository); //ignores binding
+        $this->admin = $userManageService;
         $this->middleware([
             'permission:admin manage'
         ]);

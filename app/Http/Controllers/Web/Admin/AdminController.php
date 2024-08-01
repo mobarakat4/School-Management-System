@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class AdminController extends Controller
 {
