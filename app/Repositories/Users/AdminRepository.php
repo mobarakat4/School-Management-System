@@ -3,7 +3,7 @@
 namespace App\Repositories\Users;
 use App\Models\Admin;
 
-Class AdminRepository {
+Class AdminRepository implements UserRepositoryInterface{
 
     public function find($id){
         $admin = Admin::where('user_id',$id)->first();

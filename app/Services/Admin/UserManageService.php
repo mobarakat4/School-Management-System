@@ -11,17 +11,19 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Repositories\Users\UserRepository;
 use App\Repositories\Users\AdminRepository;
-class AdminManageService{
+use App\Repositories\Users\UserRepositoryInterface;
+
+class UserManageService{
 
     private $error;
 
     private $image_service ;
     private $user_repo ;
-    private $admin_repo ;
-    public function __construct(){
+    private $usermanage ;
+    public function __construct(UserRepositoryInterface $usermanage){
         $this->image_service = new ImageService;
         $this->user_repo = new UserRepository;
-        $this->admin_repo = new AdminRepository;
+        $this->usermanage = $usermanage;
     }
     function get_admins(){
         $admins = new User;
@@ -33,13 +35,13 @@ class AdminManageService{
     }
     function get_admin($id){
         $user = $this->user_repo->find($id);// get user table details
-        $admin = $this->admin_repo->find($user['id']);
+        $admin = $this->usermanage->find($user['id']);
         return array_merge($user,$admin);
     }
     public function add_admin($request){
         try{
             $user = $this->user_repo->create($request);
-            $this->admin_repo->create($user->id);
+            $this->usermanage->create($user->id);
         }catch(Exception $e){
             $this->error = $e->getMessage();
         }
@@ -47,13 +49,13 @@ class AdminManageService{
     public function update_admin($request ,$id){
         $user = $this->user_repo->update($request,$id); // update users table
 
-        $this->admin_repo->update( null ,$user->id ); // update admin table to add updated by
+        $this->usermanage->update( null ,$user->id ); // update admin table to add updated by
 
     }
     public function delete_admin($id){
         $user =$this->user_repo->delete($id);
 
-        // dd($this->admin_repo->delete($user->id)); // no need for it because in delete cascade
+        // dd($this->usermanage->delete($user->id)); // no need for it because in delete cascade
 
 
     }

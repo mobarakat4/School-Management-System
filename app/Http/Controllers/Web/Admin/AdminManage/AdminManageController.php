@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Web\Admin\AdminManage;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AdminManagementRequest;
-use App\Services\Admin\AdminManageService;
+use App\Repositories\Users\AdminRepository;
+use App\Services\Admin\UserManageService;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,9 @@ class AdminManageController extends Controller
 {
     private $admin;
 
-    public function __construct(AdminManageService $adminManageService){
+    public function __construct(){
         // $this->admin = new AdminManageService;
-        $this->admin = $adminManageService;
+        $this->admin = new UserManageService(new AdminRepository); //ignores binding
         $this->middleware([
             'permission:admin manage'
         ]);
