@@ -25,7 +25,7 @@ class UserManageService{
         $this->user_repo = new UserRepository;
         $this->usermanage = $usermanage;
     }
-    function get_admins(){
+    function get(){
         $admins = new User;
         $admins  =$admins->with(['admin','address']);
         $result = $admins->where('role','admin')->get();
@@ -33,12 +33,12 @@ class UserManageService{
         // dd($result);
         return  $result;
     }
-    function get_admin($id){
+    function find($id){
         $user = $this->user_repo->find($id);// get user table details
         $admin = $this->usermanage->find($user['id']);
         return array_merge($user,$admin);
     }
-    public function add_admin($request){
+    public function add($request){
         try{
             $user = $this->user_repo->create($request);
             $this->usermanage->create($user->id);
@@ -46,13 +46,13 @@ class UserManageService{
             $this->error = $e->getMessage();
         }
     }
-    public function update_admin($request ,$id){
+    public function update($request ,$id){
         $user = $this->user_repo->update($request,$id); // update users table
 
         $this->usermanage->update( null ,$user->id ); // update admin table to add updated by
 
     }
-    public function delete_admin($id){
+    public function delete($id){
         $user =$this->user_repo->delete($id);
 
         // dd($this->usermanage->delete($user->id)); // no need for it because in delete cascade

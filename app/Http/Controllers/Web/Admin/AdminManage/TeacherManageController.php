@@ -4,37 +4,37 @@ namespace App\Http\Controllers\Web\Admin\AdminManage;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AdminManagementRequest;
-use App\Repositories\Users\AdminRepository;
+use App\Repositories\Users\TeacherRepository;
 use App\Services\Admin\UserManageService;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class AdminManageController extends Controller
+class TeacherManageController extends Controller
 {
-    private $admin;
+    private $teacher;
 
     public function __construct(){
-        $this->admin = new UserManageService(new AdminRepository); //ignores binding
+        $this->teacher = new UserManageService(new TeacherRepository); //ignores binding
         $this->middleware([
             'permission:admin manage'
         ]);
     }
     public function index(){
-        $admins = $this->admin->get();
+        $teacher = $this->teacher->get();
         return view('admin.admin_manage.show_all',compact('admins'));
     }
     public function show($id){
-        $admin = $this->admin->find($id);
-        dd($admin);
+        $teacher = $this->teacher->find($id);
+        dd($teacher);
     }
     public function create(){
         return view('admin.admin_manage.add');
     }
     public function store(AdminManagementRequest $request){
-        $this->admin->add($request);
-        if($this->admin->get_error()){
+        $this->teacher->add($request);
+        if($this->teacher->get_error()){
             $arr = [
-                'message'=> ( $this->admin->get_error()),
+                'message'=> ( $this->teacher->get_error()),
                 'alert_type'=>'error'
             ];
 
@@ -48,14 +48,14 @@ class AdminManageController extends Controller
         return redirect()->back()->with($arr);
     }
     public function edit($id){
-        $admin = $this->admin->find($id);
+        $admin = $this->teacher->find($id);
         return view('admin.admin_manage.edit')->with(['admin'=>$admin]);
     }
     public function update(AdminManagementRequest $request , $id){
-        $this->admin->update($request,$id);
-        if($this->admin->get_error()){
+        $this->teacher->update($request,$id);
+        if($this->teacher->get_error()){
             $arr = [
-                'message'=> ( $this->admin->get_error()),
+                'message'=> ( $this->teacher->get_error()),
                 'alert_type'=>'error'
             ];
 
@@ -69,7 +69,7 @@ class AdminManageController extends Controller
         return redirect()->back()->with($arr);
     }
     public function destroy($id){
-        $this->admin->delete($id);
+        $this->teacher->delete($id);
         $arr = [
             'message'=> "admin deleted successfuly",
             'alert_type'=>'success',

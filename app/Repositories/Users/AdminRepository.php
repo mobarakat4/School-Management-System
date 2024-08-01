@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Users;
 use App\Models\Admin;
+use App\Models\User;
 
 Class AdminRepository implements UserRepositoryInterface{
 
@@ -19,8 +20,12 @@ Class AdminRepository implements UserRepositoryInterface{
     public function create($id){
         $admin = new Admin;
         $admin->user_id = $id;
-        $admin->added_by = Admin::where('id',auth()->user()->id)->first(['id'])->id;
+        $admin->added_by = Admin::where('user_id',auth()->user()->id)->first(['id'])->id;
         $admin->save();
+        // add role
+        $user  = User::find($id);
+        $user->role = 'admin';
+        $user->save();
         return $admin;
     }
     public function update($request ,$id){

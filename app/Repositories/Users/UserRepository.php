@@ -34,7 +34,6 @@ class UserRepository implements UserRepositoryInterface{
             $user = new User;
             $user->name = $request->name?? null;
             $user->username = $request->username;
-            $user->role = 'admin';
             $user->email = $request->email;
             $user->phone = $request->phone??null;
             $user->status = $request->status;
