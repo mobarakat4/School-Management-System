@@ -20,15 +20,15 @@ class StudentManageController extends Controller
         ]);
     }
     public function index(){
-        $student = $this->student->get();
-        return view('admin.admin_manage.show_all',compact('admins'));
+        $students = $this->student->get();
+        return view('admin.student_manage.show_all',compact('students'));
     }
     public function show($id){
-        $admin = $this->student->find($id);
-        dd($admin);
+        $student = $this->student->find($id);
+        dd($student);
     }
     public function create(){
-        return view('admin.admin_manage.add');
+        return view('admin.student_manage.add');
     }
     public function store(AdminManagementRequest $request){
         $this->student->add($request);
@@ -40,7 +40,7 @@ class StudentManageController extends Controller
 
         }else{
             $arr = [
-                'message'=> "admin added successfuly",
+                'message'=> "student added successfuly",
                 'alert_type'=>'success'
             ];
 
@@ -48,8 +48,8 @@ class StudentManageController extends Controller
         return redirect()->back()->with($arr);
     }
     public function edit($id){
-        $admin = $this->student->find($id);
-        return view('admin.admin_manage.edit')->with(['admin'=>$admin]);
+        $student = $this->student->find($id);
+        return view('admin.student_manage.edit')->with(['student'=>$student]);
     }
     public function update(AdminManagementRequest $request , $id){
         $this->student->update($request,$id);
@@ -61,7 +61,7 @@ class StudentManageController extends Controller
 
         }else{
             $arr = [
-                'message'=> "admin updated successfuly",
+                'message'=> "studnet updated successfuly",
                 'alert_type'=>'success'
             ];
 
@@ -71,7 +71,7 @@ class StudentManageController extends Controller
     public function destroy($id){
         $this->student->delete($id);
         $arr = [
-            'message'=> "admin deleted successfuly",
+            'message'=> "student deleted successfuly",
             'alert_type'=>'success',
         ];
         return redirect()->back()->with($arr);

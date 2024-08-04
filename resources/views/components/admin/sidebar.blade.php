@@ -31,9 +31,43 @@
                     <li class="nav-item ">
                     <a href="{{route('admin.admin_manage.index')}}" class="nav-link ar-dir ar-fontlarge">{{__('messages.show')}} </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                     <a href="{{route('admin.admin_manage.create')}}" class="nav-link ar-dir ar-fontlarge" > {{__('messages.add')}} </a>
+                    </li> --}}
+                </ul>
+                </div>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link ar-dir" data-bs-toggle="collapse" href="#students" role="button" aria-expanded="false" aria-controls="emails">
+            <i class="link-icon" data-feather="mail"></i>
+            <span class="link-title ar-fontlarge ">{{__('messages.students')}}</span>
+            <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="students">
+                <ul class="nav sub-menu">
+                    <li class="nav-item ">
+                    <a href="{{route('admin.student_manage.index')}}" class="nav-link ar-dir ar-fontlarge">{{__('messages.show')}} </a>
                     </li>
+                    {{-- <li class="nav-item">
+                    <a href="{{route('admin.student_manage.create')}}" class="nav-link ar-dir ar-fontlarge" > {{__('messages.add')}} </a>
+                    </li> --}}
+                </ul>
+                </div>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link ar-dir" data-bs-toggle="collapse" href="#teacher" role="button" aria-expanded="false" aria-controls="emails">
+            <i class="link-icon" data-feather="mail"></i>
+            <span class="link-title ar-fontlarge ">{{__('messages.teachers')}}</span>
+            <i class="link-arrow" data-feather="chevron-down"></i>
+            </a>
+            <div class="collapse" id="teacher">
+                <ul class="nav sub-menu">
+                    <li class="nav-item ">
+                    <a href="{{route('admin.teacher_manage.index')}}" class="nav-link ar-dir ar-fontlarge">{{__('messages.show')}} </a>
+                    </li>
+                    {{-- <li class="nav-item">
+                    <a href="{{route('admin.teacher_manage.create')}}" class="nav-link ar-dir ar-fontlarge" > {{__('messages.add')}} </a>
+                    </li> --}}
                 </ul>
                 </div>
         </li>
@@ -49,9 +83,9 @@
                     <li class="nav-item">
                     <a href="{{route('admin.role.index')}}" class="nav-link ar-dir ar-fontlarge">{{__('messages.show')}} </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                     <a href="{{route('admin.role.create')}}" class="nav-link ar-dir ar-fontlarge"> {{__('messages.add')}} </a>
-                    </li>
+                    </li> --}}
                 </ul>
                 </div>
         </li>

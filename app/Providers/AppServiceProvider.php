@@ -25,12 +25,9 @@ class AppServiceProvider extends ServiceProvider
             }elseif(strpos($url , 'teacher_manage')){
                 return new TeacherRepository();
             }else{
-                dd('error');
+                 throw new \Exception("Repository not found");
             }
         });
-    // $this->app->when(\App\Http\Controllers\Web\Admin\AdminManage\AdminManageController::class)
-    //               ->needs(\App\Repositories\Users\UserRepositoryInterface::class)
-    //               ->give(AdminRepository::class);
 
     }
 

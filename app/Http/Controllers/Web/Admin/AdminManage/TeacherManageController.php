@@ -20,15 +20,15 @@ class TeacherManageController extends Controller
         ]);
     }
     public function index(){
-        $teacher = $this->teacher->get();
-        return view('admin.admin_manage.show_all',compact('admins'));
+        $teachers = $this->teacher->get();
+        return view('admin.teacher_manage.show_all',compact('teachers'));
     }
     public function show($id){
         $teacher = $this->teacher->find($id);
         dd($teacher);
     }
     public function create(){
-        return view('admin.admin_manage.add');
+        return view('admin.teacher_manage.add');
     }
     public function store(AdminManagementRequest $request){
         $this->teacher->add($request);
@@ -40,7 +40,7 @@ class TeacherManageController extends Controller
 
         }else{
             $arr = [
-                'message'=> "admin added successfuly",
+                'message'=> "techer added successfuly",
                 'alert_type'=>'success'
             ];
 
@@ -48,8 +48,8 @@ class TeacherManageController extends Controller
         return redirect()->back()->with($arr);
     }
     public function edit($id){
-        $admin = $this->teacher->find($id);
-        return view('admin.admin_manage.edit')->with(['admin'=>$admin]);
+        $teacher = $this->teacher->find($id);
+        return view('admin.teacher_manage.edit')->with(['teacher'=>$teacher]);
     }
     public function update(AdminManagementRequest $request , $id){
         $this->teacher->update($request,$id);
@@ -61,7 +61,7 @@ class TeacherManageController extends Controller
 
         }else{
             $arr = [
-                'message'=> "admin updated successfuly",
+                'message'=> "techer updated successfuly",
                 'alert_type'=>'success'
             ];
 
@@ -71,7 +71,7 @@ class TeacherManageController extends Controller
     public function destroy($id){
         $this->teacher->delete($id);
         $arr = [
-            'message'=> "admin deleted successfuly",
+            'message'=> "techer deleted successfuly",
             'alert_type'=>'success',
         ];
         return redirect()->back()->with($arr);

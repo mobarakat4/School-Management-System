@@ -27,11 +27,12 @@ class UserManageService{
     }
     function get(){
         $admins = new User;
-        $admins  =$admins->with(['admin','address']);
-        $result = $admins->where('role','admin')->get();
+        // $admins  = $admins->where('role','admin')->with(['admin','address'])->get();
+        $admins = $this->usermanage->get();
+        // $result = $admins->where('role','admin')->get();
         // $admins = $admins->user()->get();
         // dd($result);
-        return  $result;
+        return  $admins;
     }
     function find($id){
         $user = $this->user_repo->find($id);// get user table details
@@ -41,7 +42,7 @@ class UserManageService{
     public function add($request){
         try{
             $user = $this->user_repo->create($request);
-            $this->usermanage->create($user->id);
+            $this->usermanage->create($request , $user->id);
         }catch(Exception $e){
             $this->error = $e->getMessage();
         }
@@ -49,7 +50,7 @@ class UserManageService{
     public function update($request ,$id){
         $user = $this->user_repo->update($request,$id); // update users table
 
-        $this->usermanage->update( null ,$user->id ); // update admin table to add updated by
+        $this->usermanage->update( $request ,$user->id ); // update admin table to add updated by
 
     }
     public function delete($id){

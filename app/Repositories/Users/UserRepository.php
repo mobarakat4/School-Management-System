@@ -5,7 +5,7 @@ use App\Models\Address;
 use Illuminate\Support\Facades\Hash;
 use App\Services\Images\ImageService;
 
-class UserRepository implements UserRepositoryInterface{
+class UserRepository {
     private $image;
     public function __construct(){
         $this->image = new ImageService;
@@ -84,9 +84,7 @@ class UserRepository implements UserRepositoryInterface{
         if($request->password){
             $user->password = Hash::make($request->password);
         }
-        if( $request->hasFile('photo')){
-            $this->image->update( $request->photo, 'admins', $user);
-        }
+        
         $user->save();
         return $user;
     }
