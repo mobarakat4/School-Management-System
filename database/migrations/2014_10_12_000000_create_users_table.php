@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->string('phone')->nullable();
             $table->foreignId('address_id')->nullable()->references('id')->on('addresses');
-            $table->enum('role' , ['admin','teacher','student'])->default('student'); // roles of the users for authentication
+            $table->enum('role' , ['admin','teacher','student'])->default('student'); // roles of the users for authentication not for permissions
             $table->enum('status' , ['active','inactive'])->default('active');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('classnames', function (Blueprint $table) {
+        Schema::create('classes', function (Blueprint $table) {
             $table->id();
             $table->string('class_name')->unique();
-            $table->foreignId('grade_year')->constrained('gradeyears');
+            $table->foreignId('grade_year')->constrained('grade_levels');
             $table->timestamps();
         });
     }

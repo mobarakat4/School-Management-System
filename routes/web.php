@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Web\Admin\AdminManage\AdminManageController;
 use App\Http\Controllers\Web\Admin\AdminManage\StudentManageController;
 use App\Http\Controllers\Web\Admin\AdminManage\TeacherManageController;
+use App\Http\Controllers\Web\Admin\SchoolManage\GradeLevelController;
 use App\Http\Controllers\Web\Admin\ProfileController as AdminProfile;
 use App\Http\Controllers\Web\Admin\RoleController;
 use Illuminate\Support\Facades\Route;
@@ -55,10 +56,13 @@ Route::as('admin.')->prefix('admin/')->middleware(['auth','rol:admin'])->group(f
     Route::get('theme/dark',[ThemeContoller::class,'dark'])->name('theme.dark');
 
     //management
+    //User management
     Route::resource('admin_manage',AdminManageController::class); // resource for admin
     Route::resource('student_manage',StudentManageController::class); // resource for student
     Route::resource('teacher_manage',TeacherManageController::class); // resource for teacher
     Route::resource('role',RoleController::class); // resource for role
+    //school management
+    Route::resource('grade_level',GradeLevelController::class);
 });
 //
 Route::prefix('admin/')->middleware('guest')->group(function(){

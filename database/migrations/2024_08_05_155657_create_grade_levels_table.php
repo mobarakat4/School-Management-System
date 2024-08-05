@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gradeyears', function (Blueprint $table) {
+        Schema::create('grade_levels', function (Blueprint $table) {
             $table->id();
-            $table->string('grade');
+            $table->string('level'); // level name (first , second ,etc.)
+            $table->year('start_year'); // in(2024 or 2025 etc) the acadamic year
+            $table->year('end_year')->nullable();
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gradeyears');
+        Schema::dropIfExists('grade_levels');
     }
 };
