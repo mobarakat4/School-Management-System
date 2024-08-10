@@ -9,7 +9,23 @@ Class GradeLevelService{
         $levels = GradeLevel::get();
         return $levels;
     }
+    public function find($id){
+        $level = GradeLevel::find($id);
+        return $level;
+    }
     public function store($request){
-        GradeLevel::create($request);
+        $level = GradeLevel::create($request);
+        return $level;
+
+    }
+    public function update($request,$id){
+        $level = GradeLevel::find($id);
+        $level->update($request);
+        return $level;
+    }
+    public function delete($id){
+        $level = GradeLevel::find($id);
+        $level->delete();
+        return $level;
     }
 }

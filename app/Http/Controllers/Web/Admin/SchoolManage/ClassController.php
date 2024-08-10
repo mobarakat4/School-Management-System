@@ -3,23 +3,22 @@
 namespace App\Http\Controllers\Web\Admin\SchoolManage;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\GradeLevelRequest;
-use App\Services\Admin\GradeLevelService;
+use App\Services\Admin\ClassService;
 use Illuminate\Http\Request;
 
-class GradeLevelController extends Controller
+class ClassController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    private $grade;
-    public function __construct(GradeLevelService $grade){
-        $this->grade = $grade;
+    private $class;
+    public function __construct(ClassService $class){
+        $this->class = $class;
+
     }
     public function index()
     {
-        $levels = $this->grade->index();
-        dd($levels);
+        $res = $this->class->index();
     }
 
     /**
@@ -27,39 +26,39 @@ class GradeLevelController extends Controller
      */
     public function create()
     {
-        //TODO
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(GradeLevelRequest  $request)
+    public function store(Request $request)
     {
-        $this->grade->store($request);
+        $this->class->store($request);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show( $id)
+    public function show(string $id)
     {
-        $this->grade->find($id);
+        $this->class->find($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit( $id)
+    public function edit(string $id)
     {
-        //
+        $class = $this->class->find($id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(GradeLevelRequest $request, string $id)
+    public function update(Request $request, string $id)
     {
-        //
+        $class = $this->class->update($request, $id);
     }
 
     /**
@@ -67,6 +66,6 @@ class GradeLevelController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $this->class->delete($id);
     }
 }
