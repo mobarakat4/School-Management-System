@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             GradeLevelTableSeeder::class,
             ClassTableSeeder::class,
+            SubjectTableSeeder::class,
 
         ]
         );

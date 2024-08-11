@@ -15,4 +15,25 @@ class Classname extends Model
     public function level(){
         return $this->belongsTo(GradeLevel::class,'grade_year');
     }
+
+    public function subjects(){
+        return $this->belongsToMany(
+            Subject::class,
+            'subject_class',
+            'class_id',
+            'subject_id',
+            'id',
+            'id'
+        );
+    }
+    public function teachers(){
+        return $this->belongsToMany(
+            Classname::class,
+            'teacher_class',
+            'class_id',
+            'teacher_id',
+            'id',
+            'id'
+        );
+    }
 }
