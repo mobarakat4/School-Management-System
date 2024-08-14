@@ -6,6 +6,9 @@ use Illuminate\Support\ServiceProvider;
 use \App\Repositories\Users\AdminRepository;
 use \App\Repositories\Users\StudentRepository;
 use \App\Repositories\Users\TeacherRepository;
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -28,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
                  throw new \Exception("Repository not found");
             }
         });
+        
 
     }
 

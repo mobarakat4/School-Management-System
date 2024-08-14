@@ -1,17 +1,8 @@
-import './bootstrap';
-
-import Alpine from 'alpinejs';
-
-window.Alpine = Alpine;
-
-Alpine.start();
-
-// Optionally, you can call the requestPermission function here or in a component
-
 // resources/js/firebase.js
 import { initializeApp } from "firebase/app";
-import { getMessaging, getToken } from "firebase/messaging";
-
+import { getMessaging, getToken,onMessage } from "firebase/messaging";
+// import toastr from 'toastr';
+// import 'toastr/build/toastr.min.css';
 // Firebase configuration (replace with your actual config)
 const firebaseConfig = {
     apiKey: "AIzaSyDX4nbzPKI2zPPNsWKEvjEe0M68rI9e1xM",
@@ -48,6 +39,30 @@ if ('serviceWorker' in navigator) {
     }).catch((err) => {
         console.error('Service worker registration failed, error:', err);
     });
+    onMessage(messaging, (payload) => {
+        console.log('Message received. ', payload);
+
+        // Extract the notification data
+        const title = payload.notification.title;
+        const body = payload.notification.body;
+
+        // Display a toast notification using Toastr
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        toastr.success(body, title);
+      });
+
 } else {
     console.warn('Service workers are not supported in this browser.');
 }

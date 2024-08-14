@@ -62,7 +62,7 @@
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
-  <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+  {{-- <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
   <script>
 
     // Enable pusher logging - don't include this in production
@@ -74,7 +74,9 @@
 
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(data) {
-      alert(JSON.stringify(data));
+      alert(JSON.stringify(np));
     });
-  </script>
+  </script> --}}
+          @vite([ 'resources/js/firebase.js'])
+
 </head>

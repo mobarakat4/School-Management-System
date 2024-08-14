@@ -40,6 +40,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function routeNotificationForFcm()
+    {
+        return env('MY_TOKEN');
+    }
+
     public function admin(){
         return $this->hasOne(Admin::class);
     }

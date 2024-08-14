@@ -160,6 +160,7 @@ return [
          * Package Service Providers...
          */
         Spatie\Permission\PermissionServiceProvider::class,
+        Kreait\Laravel\Firebase\ServiceProvider::class,
 
 
         /*

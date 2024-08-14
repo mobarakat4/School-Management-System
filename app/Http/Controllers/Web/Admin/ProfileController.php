@@ -14,14 +14,17 @@ use App\Models\Address;
 use App\Models\User;
 use App\Notifications\ProfileChanged;
 
+
 use function PHPUnit\Framework\isNull;
 
 class ProfileController extends Controller
 {
     //
     private $profile;
-    public function __construct(ProfileService $profileService){
+    private $messaging;
+    public function __construct(ProfileService $profileService ){
         $this->profile = $profileService;
+
     }
     public function index(){
         $user  = auth()->user();
