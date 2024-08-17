@@ -12,6 +12,8 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "mll-lab/laravel-graphiql": "^3.2",
+        "nuwave/lighthouse": "^6.42",
         "pusher/pusher-php-server": "^7.2",
         "spatie/laravel-permission": "^6.9"
     },
