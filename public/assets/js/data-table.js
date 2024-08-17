@@ -1,16 +1,15 @@
 // npm package: datatables.net-bs5
 // github link: https://github.com/DataTables/Dist-DataTables-Bootstrap5
-console.log('happen')
 $(function() {
   'use strict';
 
   $(function() {
     $('#dataTableExample').DataTable({
       "aLengthMenu": [
-        [10, 30, 50, -1],
-        [10, 30, 50, "All"]
+        [1,2,10, 30, 50, -1],
+        [1,2,10, 30, 50, "All"]
       ],
-      "iDisplayLength": 10,
+      "iDisplayLength": 1,
       "language": {
         search: ""
       }
