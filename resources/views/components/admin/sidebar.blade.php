@@ -21,15 +21,15 @@
         </li>
         <li class="nav-item nav-category ar-fontlarge ar-dir">{{__('messages.user management')}} </li>
         <li class="nav-item ">
-            <a class="nav-link ar-dir" data-bs-toggle="collapse" href="#admins" role="button" aria-expanded="false" aria-controls="emails">
+            <a class="nav-link " data-bs-toggle="collapse" href="#admins" role="button" aria-expanded="false" aria-controls="emails">
             <i class="link-icon" data-feather="mail"></i>
-            <span class="link-title ar-fontlarge ">{{__('messages.admins')}}</span>
+            <span class="link-title ">{{__('messages.admins')}}</span>
             <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
             <div class="collapse" id="admins">
                 <ul class="nav sub-menu">
                     <li class="nav-item ">
-                    <a href="{{route('admin.admin_manage.index')}}" class="nav-link ar-dir ar-fontlarge">{{__('messages.show')}} </a>
+                    <a href="{{route('admin.admin_manage.index')}}" class="nav-link ">{{__('messages.show')}} </a>
                     </li>
                     {{-- <li class="nav-item">
                     <a href="{{route('admin.admin_manage.create')}}" class="nav-link ar-dir ar-fontlarge" > {{__('messages.add')}} </a>
@@ -38,7 +38,7 @@
                 </div>
         </li>
         <li class="nav-item ">
-            <a class="nav-link ar-dir" data-bs-toggle="collapse" href="#students" role="button" aria-expanded="false" aria-controls="emails">
+            <a class="nav-link " data-bs-toggle="collapse" href="#students" role="button" aria-expanded="false" aria-controls="emails">
             <i class="link-icon" data-feather="mail"></i>
             <span class="link-title ar-fontlarge ">{{__('messages.students')}}</span>
             <i class="link-arrow" data-feather="chevron-down"></i>
@@ -46,7 +46,7 @@
             <div class="collapse" id="students">
                 <ul class="nav sub-menu">
                     <li class="nav-item ">
-                    <a href="{{route('admin.student_manage.index')}}" class="nav-link ar-dir ar-fontlarge">{{__('messages.show')}} </a>
+                    <a href="{{route('admin.student_manage.index')}}" class="nav-link ">{{__('messages.show')}} </a>
                     </li>
                     {{-- <li class="nav-item">
                     <a href="{{route('admin.student_manage.create')}}" class="nav-link ar-dir ar-fontlarge" > {{__('messages.add')}} </a>
@@ -55,7 +55,7 @@
                 </div>
         </li>
         <li class="nav-item ">
-            <a class="nav-link ar-dir" data-bs-toggle="collapse" href="#teacher" role="button" aria-expanded="false" aria-controls="emails">
+            <a class="nav-link " data-bs-toggle="collapse" href="#teacher" role="button" aria-expanded="false" aria-controls="emails">
             <i class="link-icon" data-feather="mail"></i>
             <span class="link-title ar-fontlarge ">{{__('messages.teachers')}}</span>
             <i class="link-arrow" data-feather="chevron-down"></i>
@@ -63,7 +63,7 @@
             <div class="collapse" id="teacher">
                 <ul class="nav sub-menu">
                     <li class="nav-item ">
-                    <a href="{{route('admin.teacher_manage.index')}}" class="nav-link ar-dir ar-fontlarge">{{__('messages.show')}} </a>
+                    <a href="{{route('admin.teacher_manage.index')}}" class="nav-link ">{{__('messages.show')}} </a>
                     </li>
                     {{-- <li class="nav-item">
                     <a href="{{route('admin.teacher_manage.create')}}" class="nav-link ar-dir ar-fontlarge" > {{__('messages.add')}} </a>
@@ -73,15 +73,15 @@
         </li>
         <li class="nav-item nav-category ar-dir ar-fontlarge"> {{__('messages.role management')}} </li>
         <li class="nav-item">
-            <a class="nav-link ar-dir" data-bs-toggle="collapse" href="#roles" role="button" aria-expanded="false" aria-controls="emails">
+            <a class="nav-link " data-bs-toggle="collapse" href="#roles" role="button" aria-expanded="false" aria-controls="emails">
             <i class="link-icon" data-feather="mail"></i>
-            <span class="link-title ar-fontlarge">{{__('messages.roles')}} </span>
+            <span class="link-title ">{{__('messages.roles')}} </span>
             <i class="link-arrow" data-feather="chevron-down"></i>
             </a>
-            <div class="  tcollapse" id="roles">
+            <div class="collapse" id="roles">
                 <ul class="nav sub-menu">
                     <li class="nav-item">
-                    <a href="{{route('admin.role.index')}}" class="nav-link ar-dir ar-fontlarge">{{__('messages.show')}} </a>
+                    <a href="{{route('admin.role.index')}}" class="nav-link ">{{__('messages.show')}} </a>
                     </li>
                     {{-- <li class="nav-item">
                     <a href="{{route('admin.role.create')}}" class="nav-link ar-dir ar-fontlarge"> {{__('messages.add')}} </a>

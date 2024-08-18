@@ -12,7 +12,7 @@ class Subject extends Model
 
     public function teachers(){
         return $this->belongsToMany(
-            Subject::class,
+            Teacher::class,
             'subject_teacher',
             'subject_id',
             'teacher_id',

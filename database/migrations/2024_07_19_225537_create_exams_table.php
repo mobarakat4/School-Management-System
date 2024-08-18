@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
             $table->string('exam_name'); // exam name
-            $table->foreignId('class_id')->constrained('classnames'); // class that will take the exam
+            // many to many between exams and classes
+            //$table->foreignId('class_id')->constrained('classnames'); // class that will take the exam
             $table->foreignId('subject_id')->constrained('subjects'); // the subject of the exam
             $table->date('date');
             $table->timestamps();

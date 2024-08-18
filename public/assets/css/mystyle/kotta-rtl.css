@@ -11,6 +11,9 @@ body{
 *{
     font-size: large !important;
 }
+.table,tr,th,td{
+    font-size: medium !important;
+}
 .page-content{
     height: 84vh !important;
     overflow: auto;

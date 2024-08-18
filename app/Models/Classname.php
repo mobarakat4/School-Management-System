@@ -28,10 +28,20 @@ class Classname extends Model
     }
     public function teachers(){
         return $this->belongsToMany(
-            Classname::class,
+            Teacher::class,
             'teacher_class',
             'class_id',
             'teacher_id',
+            'id',
+            'id'
+        );
+    }
+    public function exams(){
+        return $this->belongsToMany(
+            exam::class,
+            'exam_class',
+            'class_id',
+            'exam_id',
             'id',
             'id'
         );

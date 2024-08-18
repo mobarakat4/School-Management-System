@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('classes', function (Blueprint $table) {
+        Schema::create('exam_class', function (Blueprint $table) {
             $table->id();
-            $table->string('class_name')->unique();
-            $table->foreignId('grade_year')->constrained('grade_levels');
-            $table->enum('term',['first','second'])->default('first');
-            $table->unique(['class_name','grade_year']);
+            $table->foreignId('exam_id')->constrained('exams')->cascadeOnDelete();
+            $table->foreignId('class_id')->constrained('classess')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('classnames');
+        Schema::dropIfExists('exam_class');
     }
 };

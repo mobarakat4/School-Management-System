@@ -9,7 +9,7 @@ $(function() {
         [1,2,10, 30, 50, -1],
         [1,2,10, 30, 50, "All"]
       ],
-      "iDisplayLength": 1,
+      "iDisplayLength": 10,
       "language": {
         search: ""
       }

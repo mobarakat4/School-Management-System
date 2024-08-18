@@ -1,5 +1,7 @@
 @extends('layouts.admin')
-@section('title','All Users')
+@section('title')
+@lang('messages.all') @lang('messages.roles')
+@endsection
 @section('head')
 @endsection
 @section('content')
@@ -7,18 +9,18 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Roles</li>
+          <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">@lang('messages.main')</a></li>
+          <li class="breadcrumb-item active" aria-current="page"> @lang('messages.roles') </li>
         </ol>
       </nav>
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
 <div class="card">
   <div class="card-body">
-    <h6 class="card-title">All Roles</h6>
-    <p class="text-muted mb-3"> <a href="{{route('admin.role.create')}}" > Add New Role +</a></p>
+    <h6 class="card-title">@lang('messages.all') @lang('messages.roles')</h6>
+    <p class="text-muted mb-3"> <a href="{{route('admin.role.create')}}" > @lang('messages.add') @lang('messages.role') +</a></p>
     <div class="table-responsive">
-      <table id="dataTableExample" class="table">
+      <table  id="dataTableExample" class="table font-m" >
         <thead>
           <tr>
             <th>Role</th>
@@ -36,7 +38,7 @@
               <td >
 
                 @foreach ($role->permissions as $permission )
-                    {{"( ". $permission->name ." )" }}
+                    {{" ( ". $permission->name ." )" }}
                 @endforeach
 
               </td>
@@ -66,6 +68,7 @@
             </tr>
             @endforeach
 
+
         </tbody>
       </table>
     </div>
@@ -80,8 +83,7 @@
 @section('js')
 
 	<!-- Plugin js for this page -->
-  <script src="{{asset('assets/vendors/datatables.net/jquery.dataTables.js')}}"></script>
-  <script src="{{asset('assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js')}}"></script>
+    @include('components.script.datatable')
     @include('components.script.toaster')
 	<!-- Custom js for this page -->
 	<!-- End custom js for this page -->
