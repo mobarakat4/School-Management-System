@@ -58,6 +58,10 @@ Route::as('admin.')->prefix('admin/')->middleware(['auth','rol:admin'])->group(f
     //management
     //User management
     Route::resource('admin_manage',AdminManageController::class); // resource for admin
+    // Route::get('admin_manage/')
+    Route::get('admin_manage/{admin_manage}/getroles',[AdminManageController::class,'getroles'])->name('admin_manage.getroles');
+    Route::post('admin_manage/{admin_manage}/roles',[AdminManageController::class,'roles'])->name('admin_manage.roles');
+    //
     Route::resource('student_manage',StudentManageController::class); // resource for student
     Route::resource('teacher_manage',TeacherManageController::class); // resource for teacher
     Route::resource('role',RoleController::class); // resource for role

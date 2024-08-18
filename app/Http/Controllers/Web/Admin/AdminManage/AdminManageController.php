@@ -8,6 +8,7 @@ use App\Repositories\Users\AdminRepository;
 use App\Services\Admin\UserManageService;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class AdminManageController extends Controller
 {
@@ -77,6 +78,18 @@ class AdminManageController extends Controller
         ];
         return redirect()->back()->with($arr);
 
+    }
+    public function getroles($id){
+        $res = $this->admin->getroles($id);
+        $user = $res['user'];
+        $roles = $res['roles'];
+        $userroles = $res['userroles'];
+        // dd($user);
+        return view('admin.admin_manage.roles',compact('user','roles','userroles'));
+    }
+    public  function roles(Request $request , $id){
+        $this->admin->roles($request, $id);
+        return redirect()->back();
     }
 
 

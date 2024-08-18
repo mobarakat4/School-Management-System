@@ -30,8 +30,9 @@ class AppServiceProvider extends ServiceProvider
             }else{
                  throw new \Exception("Repository not found");
             }
+            // return new AdminRepository();
         });
-        
+
 
     }
 

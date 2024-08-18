@@ -59,12 +59,15 @@
                         ><i class="bx bx-edit-alt me-2"></i> @lang('messages.update')</a
                       >
                       <form action="{{route('admin.admin_manage.destroy',['admin_manage'=> $admin->id])}}" method="POST">
-                        @method('DELETE')
-                        @csrf
-                        <button type="submit" class="dropdown-item">
-                            <i class="bx bx-trash me-2"></i> @lang('messages.delete')
-                        </button>
-                      </form>
+                          @method('DELETE')
+                          @csrf
+                          <button type="submit" class="dropdown-item">
+                              <i class="bx bx-trash me-2"></i> @lang('messages.delete')
+                            </button>
+                        </form>
+                        <a class="dropdown-item" href="{{route('admin.admin_manage.getroles',['admin_manage' => $admin->id])}}"
+                          ><i class="bx bx-edit-alt me-2"></i> @lang('messages.roles')</a
+                        >
                     </div>
                   </div>
               </td>

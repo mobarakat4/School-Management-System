@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use App\Repositories\Users\UserRepository;
 use App\Repositories\Users\AdminRepository;
 use App\Repositories\Users\UserRepositoryInterface;
+use Spatie\Permission\Models\Role;
 
 class UserManageService{
 
@@ -57,8 +58,25 @@ class UserManageService{
         $user =$this->user_repo->delete($id);
 
         // dd($this->usermanage->delete($user->id)); // no need for it because in delete cascade
+        return $user;
+    }
+    public function getroles($id){
+        // $user = User::with('roles')->find(1);
+        $user = User::with('roles')->find($id);
+        $roles = Role::get();
+        $userroles = $user->roles->pluck('name')->toarray();
+        $arr =array();
+        // dd($userroles);
+        $arr['user'] = $user;
+        $arr['roles'] = $roles;
+        $arr['userroles'] = $userroles;
+        return $arr;
 
-
+    }
+    public function roles($request , $id){
+        $user = User::find($id);
+        $user->roles()->sync($request->roles);
+        return $user;
     }
 
     public function get_error(){
