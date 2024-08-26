@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users','id')->unique()->cascadeOnDelete();
             $table->foreignId('hired_by')->nullable()->constrained('admins')->cascadeOnDelete();
-            $table->date('hired_at')->default(now());// not used 
+            $table->foreignId('subject_id')->nullable()->constrained('subjects')->cascadeOnDelete();// one subject
+            $table->date('hired_at')->default(now());// not used
             $table->timestamps();
         });
     }

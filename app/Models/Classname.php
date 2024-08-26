@@ -16,6 +16,12 @@ class Classname extends Model
         return $this->belongsTo(GradeLevel::class,'grade_year');
     }
 
+    public function students(){
+        return $this->hasMany(Student::class);
+    }
+
+    
+    //optional
     public function subjects(){
         return $this->belongsToMany(
             Subject::class,

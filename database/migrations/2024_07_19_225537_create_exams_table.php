@@ -17,7 +17,7 @@ return new class extends Migration
             // many to many between exams and classes
             //$table->foreignId('class_id')->constrained('classnames'); // class that will take the exam
             $table->foreignId('subject_id')->constrained('subjects'); // the subject of the exam
-            $table->date('date');
+            $table->date('date'); // date of the exam
             $table->timestamps();
         });
     }
